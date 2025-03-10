@@ -3,7 +3,11 @@ import userIcon from "../assets/user.png"
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
 const Navbar = () => {
-    const {user, signOutUser} = useContext(AuthContext)
+    const {user, setUser, signOutUser} = useContext(AuthContext);
+    const handleSignOut = () => {
+        setUser(null);
+        signOutUser();
+    }
     return (
         <div className="grid grid-cols-12 my-5 ps-2 pe-2">
             <div className="col-span-4">
@@ -20,7 +24,7 @@ const Navbar = () => {
                 {
                     user 
                     ?
-                    <NavLink onClick={signOutUser} to="/auth/login" className="btn bg-[black] text-white px-10">SignOut</NavLink>
+                    <NavLink onClick={handleSignOut} to="/auth/login" className="btn bg-[black] text-white px-10">SignOut</NavLink>
                     :
                     <NavLink to="/auth/login" className="btn bg-[black] text-white px-10">Login</NavLink>
                 }

@@ -1,14 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 const SocialLogin = () => {
-    const {user,googleSignIn} = useContext(AuthContext);
+    const {user, setUser, googleSignIn} = useContext(AuthContext);
     const provider = new GoogleAuthProvider();
     const handleGoogleLogin=()=>{
         googleSignIn(provider)
         .then((result)=>{
-
+            
         })
         .cath((error)=>{
 
