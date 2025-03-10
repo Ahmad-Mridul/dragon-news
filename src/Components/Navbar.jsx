@@ -19,8 +19,8 @@ const Navbar = () => {
                 <NavLink className="me-5 font-poppins" to="/">Career</NavLink>
             </div>
             <div className="login flex col-span-4 items-end justify-end gap-2">
-                <img src={userIcon} alt="" />
-                {user && <p>{user.email}</p>}
+                <img src={user?.photoURL} alt={user?.displayName} className="w-12 rounded-3xl" />
+                {user && <p>{user?.displayName}</p>}
                 {
                     user 
                     ?

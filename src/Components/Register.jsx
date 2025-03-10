@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Register = () => {
-    const {createNewUser,setUser, signOutUser} = useContext(AuthContext);   
+    const {createNewUser,setUser, signOutUser,updateInfo} = useContext(AuthContext);   
     const [error,setError] = useState("");
     const navigate = useNavigate(); 
     const handleLogin=(e)=>{
@@ -18,8 +18,19 @@ const Register = () => {
         const photo = form.get("photo");
         const email = form.get("email");
         const password = form.get("password");
+        const updatedInfo = {
+            displayName:name,
+            photoURL:photo
+        }
         createNewUser(email,password)
         .then((result)=>{
+            updateInfo(updatedInfo)
+            .then((result)=>{
+
+            })
+            .catch(error=>{
+
+            })
             signOutUser()
             .then((result)=>{
 
