@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Register = () => {
-    const {createNewUser,setUser, signOutUser} = useContext(AuthContext);    
+    const {createNewUser,setUser, signOutUser} = useContext(AuthContext);   
+    const navigate = useNavigate(); 
     const handleLogin=(e)=>{
         e.preventDefault();
         const form = new FormData(e.target);
@@ -11,22 +12,21 @@ const Register = () => {
         const photo = form.get("photo");
         const email = form.get("email");
         const password = form.get("password");
-        console.log(name,photo,email,password);
         createNewUser(email,password)
         .then((result)=>{
-            // const user = result.user;
-            // setUser(user);
-            // console.log(user)
-        })
-        .catch(error=>console.log(error.message))
-        e.target.reset();
-        signOutUser()
-        .then((result)=>{
+            signOutUser()
+            .then((result)=>{
 
+            })
+            .catch((error)=>{
+                
+            })
         })
-        .catch((error)=>{
+        .catch(error=>{
             
         })
+        e.target.reset();
+        navigate("/auth/login")
     }
     return (
         <div className="w-[400px] mx-auto my-40 bg-base-200">

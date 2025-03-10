@@ -35,7 +35,7 @@ const SingleNewsCard = ({ news }) => {
             <p className="text-sm text-gray-600 mt-3">
                 {details?.substring(0, 500) || "No details available"}...
             </p>
-            <Link to={`/category`} className="text-blue-500 font-semibold mt-2 w-40 text-start cursor-pointer">
+            <Link to={`/news/${news._id}`} className="text-blue-500 font-semibold mt-2 w-40 text-start cursor-pointer">
                 Read More
             </Link>
             <hr className="h-1 text-gray-200" />

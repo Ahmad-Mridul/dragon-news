@@ -5,8 +5,6 @@ import LatestNews from "../LatestNews";
 const Center = () => {
     const data = useLoaderData();
     const news = data.data;
-    console.log(news);
-    
     return (
         <div>
             <h2 className="font-semibold">Dragon News Home</h2>

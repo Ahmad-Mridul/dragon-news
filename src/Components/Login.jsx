@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
     const {signInUser} = useContext(AuthContext);
@@ -9,12 +10,12 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email,password);
         signInUser(email,password)
         .then((result)=>{
-            console.log(result);
         })
-        .catch(error=>console.log(error.message))
+        .catch(error=>{
+
+        })
         e.target.reset();
         navigate("/");
     }
@@ -35,6 +36,7 @@ const Login = () => {
                                 <button className="btn btn-neutral mt-4">Login</button>
                             </fieldset>
                         </form>
+                        <SocialLogin></SocialLogin>
                         <p>Don't have an account? <NavLink className="text-red-400" to="/auth/register">Register</NavLink></p>
                     </div>
                 </div>

@@ -5,16 +5,16 @@ import { useContext } from "react";
 const Navbar = () => {
     const {user, signOutUser} = useContext(AuthContext)
     return (
-        <div className="flex justify-between items-center my-5">
-            <div>
+        <div className="grid grid-cols-12 my-5 ps-2 pe-2">
+            <div className="col-span-4">
 
             </div>
-            <div className="nav">
+            <div className="nav col-span-4 text-center">
                 <NavLink className="me-5 font-poppins" to="/">Home</NavLink>
                 <NavLink className="me-5 font-poppins" to="/">About</NavLink>
                 <NavLink className="me-5 font-poppins" to="/">Career</NavLink>
             </div>
-            <div className="login flex gap-2">
+            <div className="login flex col-span-4 items-end justify-end gap-2">
                 <img src={userIcon} alt="" />
                 {user && <p>{user.email}</p>}
                 {
