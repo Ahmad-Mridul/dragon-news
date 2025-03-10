@@ -9,7 +9,6 @@ const LatestNews = () => {
         .then(data=>setNews(data))
     },[])
     const allNews = news.data;
-    console.log(allNews);
     
     return (
         <div className="flex items-center gap-2 bg-base-200 p-2">
