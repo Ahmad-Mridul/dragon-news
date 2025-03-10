@@ -1,5 +1,6 @@
 import { FaRegBookmark, FaRegEye, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
+import { Link } from "react-router";
 
 const SingleNewsCard = ({ news }) => {
     const { author, title, image_url, details, rating, total_view } = news;
@@ -34,9 +35,9 @@ const SingleNewsCard = ({ news }) => {
             <p className="text-sm text-gray-600 mt-3">
                 {details?.substring(0, 500) || "No details available"}...
             </p>
-            <button className="text-blue-500 font-semibold mt-2 w-40 text-start cursor-pointer">
+            <Link to={`/category`} className="text-blue-500 font-semibold mt-2 w-40 text-start cursor-pointer">
                 Read More
-            </button>
+            </Link>
             <hr className="h-1 text-gray-200" />
 
             <div className="flex justify-between items-center mt-4">

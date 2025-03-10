@@ -8,6 +8,15 @@ const LatestNews = (news) => {
             <p className="bg-[#D72050] text-base-100 px-3 py-1">Latest</p>
             <Marquee className="space-x-10" pauseOnHover>
                 {/* {news.map(news=><p>{news.title}</p>)} */}
+                <Link to="/news" className="me-4">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, laborum.
+                </Link>
+                <Link to="/news" className="me-4">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, laborum.
+                </Link>
+                <Link to="/news">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, laborum.
+                </Link>
             </Marquee>
         </div>
     );
