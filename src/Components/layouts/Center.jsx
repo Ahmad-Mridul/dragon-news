@@ -10,9 +10,8 @@ const Center = () => {
             <h2 className="font-semibold">Dragon News Home</h2>
             <p>{news.length} news found in this category</p>
             {
-                news.map((news,idx)=><>
+                news.map(news=><>
                     <SingleNewsCard news={news} key={news._id}></SingleNewsCard>
-                    <LatestNews news={news} key={idx}></LatestNews>
                 </>)
             }
         </div>

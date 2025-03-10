@@ -2,6 +2,7 @@ import RightNavbar from "./layouts/RightNavbar";
 import Navbar from "./Navbar";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link, useLoaderData } from "react-router";
+import Header from "./Header";
 
 const NewsDetails = () => {
     const {data} = useLoaderData();
@@ -10,6 +11,7 @@ const NewsDetails = () => {
     return (
         <div>
             <header className="m-2">
+                <Header></Header>
                 <Navbar></Navbar>
             </header>
             <main className="w-11/12 mx-auto grid grid-cols-12 gap-4">

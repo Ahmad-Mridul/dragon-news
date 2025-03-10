@@ -1,20 +1,21 @@
+import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router";
-const LatestNews = (news) => {
+const LatestNews = () => {
+    const [news,setNews] = useState([]);
+    useEffect(()=>{
+        fetch("https://openapi.programming-hero.com/api/news/category/08")
+        .then(response=>response.json())
+        .then(data=>setNews(data))
+    },[])
+    const allNews = news.data;
+    console.log(allNews);
+    
     return (
         <div className="flex items-center gap-2 bg-base-200 p-2">
             <p className="bg-[#D72050] text-base-100 px-3 py-1">Latest</p>
             <Marquee className="space-x-10" pauseOnHover>
-                {/* {news.map(news=><p>{news.title}</p>)} */}
-                <Link to="/news" className="me-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, laborum.
-                </Link>
-                <Link to="/news" className="me-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, laborum.
-                </Link>
-                <Link to="/news">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, laborum.
-                </Link>
+                {allNews?.map(news=><Link to={`/news/${news._id}`} className="me-4">{news.title}</Link>)}
             </Marquee>
         </div>
     );
