@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
-    const {signInUser} = useContext(AuthContext);
+    const {signInUser,setUser} = useContext(AuthContext);
+    const location = useLocation();
     const navigate = useNavigate();
     const handleLogin=(e)=>{
         e.preventDefault();
@@ -13,12 +14,14 @@ const Login = () => {
         const password = e.target.password.value;
         signInUser(email,password)
         .then((result)=>{
+            const user = result.user;
+            setUser(user);
+            navigate(location?.state ? location.state : "/")
         })
         .catch(error=>{
 
         })
         e.target.reset();
-        navigate("/");
     }
     return (
         <div className="w-[400px] mx-auto my-40 bg-base-200">

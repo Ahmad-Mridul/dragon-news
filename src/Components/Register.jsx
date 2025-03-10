@@ -1,15 +1,20 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Register = () => {
     const {createNewUser,setUser, signOutUser} = useContext(AuthContext);   
+    const [error,setError] = useState("");
     const navigate = useNavigate(); 
     const handleLogin=(e)=>{
         e.preventDefault();
         const form = new FormData(e.target);
         const name = form.get("name");
+        if(name.length<5){
+            setError("Name must be longer than 5 characters");
+            return
+        }
         const photo = form.get("photo");
         const email = form.get("email");
         const password = form.get("password");
@@ -38,6 +43,9 @@ const Register = () => {
                             <fieldset className="fieldset">
                                 <label className="fieldset-label">Name</label>
                                 <input name="name" type="text" className="input" placeholder="Name" />
+                                {
+                                    error && <p className="text-red-500">{error}</p>
+                                }
                                 <label className="fieldset-label">Photo URL</label>
                                 <input name="photo" type="text" className="input" placeholder="photo url" />
                                 <label className="fieldset-label">Email</label>
